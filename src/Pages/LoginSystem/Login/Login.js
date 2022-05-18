@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -33,10 +33,12 @@ const Login = () => {
     let errorMessage;
     let from = location.state?.from?.pathname || "/";
 
-    // Successfully login
-    if (token) {
-        navigate(from, { replace: true });
-    }
+    // Successfully Register
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [from, navigate, token]);
 
     // Loading
     if (emailLoading) {

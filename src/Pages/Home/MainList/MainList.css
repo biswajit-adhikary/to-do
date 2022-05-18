@@ -2,3 +2,49 @@
     min-height: 89vh;
     padding: 40px 0;
 }
+
+.main-list-header {
+    border: 1px solid #ededed;
+    padding: 10px;
+}
+
+.single-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ededed;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+.task-details h3 {
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.task-details p {
+    font-size: 15px;
+    margin: 0;
+}
+
+.task-action button {
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+@media (max-width: 767px) {
+    .single-list {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .task-details p {
+        margin-bottom: 10px;
+    }
+
+    .task-action button {
+        margin: 0 5px;
+    }
+}
