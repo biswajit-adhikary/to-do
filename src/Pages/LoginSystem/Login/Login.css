@@ -1,0 +1,50 @@
+.theme-text-primary {
+    font-size: 24px;
+}
+
+.theme-sub-text {
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.form-area {
+    min-height: 100vh;
+    padding: 65px 0;
+}
+
+.form-main {
+    border: 1px solid #ededed;
+    border-radius: 6px;
+    box-shadow: 0 2px 14px rgb(38 60 85 / 16%);
+    padding: 40px;
+}
+
+.form-mata {
+    font-size: 13px;
+}
+
+.form-mata a {
+    color: #af2525;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.separator div {
+    height: 1px;
+    width: 50%;
+    background: #adadad;
+}
+
+.separator span {
+    padding: 0 10px;
+}
+
+@media only screen and (max-width: 499px) {
+    .form-main {
+        padding: 40px 15px;
+    }
+}
