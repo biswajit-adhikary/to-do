@@ -65,7 +65,7 @@ const Login = () => {
                                     <p><Link to="/forgot-password">Forgot Password?</Link></p>
                                     <p>New User? <Link to="/register">Create Account</Link></p>
                                 </div>
-                                <Button className='w-100' type="submit" variant="success">
+                                <Button className='w-100' type="submit" variant="outline-secondary">
                                     Login
                                 </Button>
                                 {errorMessage}

@@ -39,7 +39,7 @@ const GoogleLogin = () => {
 
     return (
         <div className='google-login'>
-            <Button onClick={() => signInWithGoogle()} className='w-100' variant="success" type="submit">
+            <Button onClick={() => signInWithGoogle()} className='w-100' variant="outline-secondary" type="submit">
                 <img src={google} alt="" /> Continue With Google
             </Button>
             {errorMessage}

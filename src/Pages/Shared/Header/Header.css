@@ -1,0 +1,17 @@
+.navbar-nav a {
+    margin-left: 25px;
+}
+
+.navbar-nav button {
+    margin-left: 25px;
+}
+
+@media (max-width: 991px) {
+    .navbar-nav a {
+        margin-left: 0;
+    }
+
+    .navbar-nav button {
+        margin-left: 0;
+    }
+}

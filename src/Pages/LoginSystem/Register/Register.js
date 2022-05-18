@@ -69,7 +69,7 @@ const Register = () => {
                                 <div className="form-mata d-flex justify-content-between">
                                     <p>Already have an account? <Link to="/login">Login</Link></p>
                                 </div>
-                                <Button className='w-100' type="submit" variant="success">
+                                <Button className='w-100' type="submit" variant="outline-secondary">
                                     Register
                                 </Button>
                                 {errorMessage}
