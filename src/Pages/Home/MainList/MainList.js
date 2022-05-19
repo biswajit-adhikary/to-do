@@ -57,6 +57,7 @@ const MainList = () => {
         const agree = window.confirm('Are you want to delete this item?');
         if (agree) {
             const url = `http://localhost:5000/list/${id}`;
+            console.log(url);
             fetch(url, {
                 method: 'DELETE'
             })
@@ -64,7 +65,28 @@ const MainList = () => {
                 .then(data => {
                     const remainingItem = lists.filter(item => item._id !== id);
                     setLists(remainingItem);
-                    toast.success('Item Deleted!!')
+                    toast.success('Item Deleted!')
+                })
+        }
+    }
+
+    // Completed list
+    const handelItemCompleted = (id) => {
+        const agree = window.confirm('This task completed?');
+        const status = {};
+        if (agree) {
+            const url = `http://localhost:5000/lists/${id}`;
+            console.log(url);
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(status)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    toast.success("Completed Successfully!")
                 })
         }
     }
@@ -80,7 +102,7 @@ const MainList = () => {
                                 <input className='form-control' placeholder='Task Name' type="text" {...register("name")} required />
                                 <textarea className='form-control mt-2' placeholder='Task Description' {...register("description")} required />
                                 <input className='form-control mt-2' placeholder='Email' type="hidden" value={user.email} {...register("email")} readOnly />
-                                <input className='form-control mt-2' placeholder='Status' value={"open"} type="hidden" {...register("status")} readOnly />
+                                <input className='form-control mt-2' placeholder='Status' value={0} type="hidden" {...register("status")} readOnly />
                                 <input type="submit" className='btn btn-outline-secondary mt-2 active' value="Add Task" />
                             </form>
                         </div>
@@ -100,7 +122,7 @@ const MainList = () => {
                                         <p>{list.description}</p>
                                     </div>
                                     <div className="task-action">
-                                        <Button variant="success" size="sm">
+                                        <Button onClick={() => handelItemCompleted(list._id)} variant="success" size="sm">
                                             Completed
                                         </Button>
                                         <Button onClick={() => handelItemDelete(list._id)} variant="warning" size="sm">
