@@ -34,6 +34,32 @@
     font-size: 12px;
 }
 
+div#completed {
+    position: relative;
+    z-index: 1;
+}
+
+div#completed:after {
+    position: absolute;
+    content: "Completed";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    color: #fff;
+}
+
+button.btn.btn-warning.btn-sm {
+    z-index: 9;
+    position: relative;
+}
+
 @media (max-width: 767px) {
     .single-list {
         flex-direction: column;

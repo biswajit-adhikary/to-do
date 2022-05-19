@@ -19,7 +19,7 @@ const MainList = () => {
     useEffect(() => {
         const getItem = async () => {
             const email = user?.email;
-            const url = `http://localhost:5000/task-list?email=${email}`;
+            const url = `https://whispering-stream-66859.herokuapp.com/task-list?email=${email}`;
             try {
                 const { data } = await axiosApi.get(url);
                 setLists(data);
@@ -37,7 +37,7 @@ const MainList = () => {
     // Add List
     const { register, handleSubmit } = useForm();
     const onSubmit = (data, event) => {
-        const url = `http://localhost:5000/list`;
+        const url = `https://whispering-stream-66859.herokuapp.com/list`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -56,7 +56,7 @@ const MainList = () => {
     const handelItemDelete = id => {
         const agree = window.confirm('Are you want to delete this item?');
         if (agree) {
-            const url = `http://localhost:5000/list/${id}`;
+            const url = `https://whispering-stream-66859.herokuapp.com/list/${id}`;
             console.log(url);
             fetch(url, {
                 method: 'DELETE'
@@ -73,9 +73,9 @@ const MainList = () => {
     // Completed list
     const handelItemCompleted = (id) => {
         const agree = window.confirm('This task completed?');
-        const status = {};
+        const status = { status: 'completed' };
         if (agree) {
-            const url = `http://localhost:5000/lists/${id}`;
+            const url = `https://whispering-stream-66859.herokuapp.com/lists/${id}`;
             console.log(url);
             fetch(url, {
                 method: 'PUT',
@@ -102,28 +102,20 @@ const MainList = () => {
                                 <input className='form-control' placeholder='Task Name' type="text" {...register("name")} required />
                                 <textarea className='form-control mt-2' placeholder='Task Description' {...register("description")} required />
                                 <input className='form-control mt-2' placeholder='Email' type="hidden" value={user.email} {...register("email")} readOnly />
-                                <input className='form-control mt-2' placeholder='Status' value={0} type="hidden" {...register("status")} readOnly />
+                                <input className='form-control mt-2' placeholder='Status' value={'open'} type="hidden" {...register("status")} readOnly />
                                 <input type="submit" className='btn btn-outline-secondary mt-2 active' value="Add Task" />
                             </form>
                         </div>
-                        {/* <div className="main-list-body my-4">
-                            {
-                                lists.map(list => <Task
-                                    key={list._id}
-                                    list={list}
-                                ></Task>)
-                            }
-                        </div> */}
                         <div className="main-list-body my-4">
                             {
-                                lists.map(list => <div key={list._id} className='single-list bg-light'>
+                                lists.map(list => <div key={list._id} className='single-list bg-light' id={list.status}>
                                     <div className="task-details">
                                         <h3>{list.name}</h3>
                                         <p>{list.description}</p>
                                     </div>
                                     <div className="task-action">
                                         <Button onClick={() => handelItemCompleted(list._id)} variant="success" size="sm">
-                                            Completed
+                                            Complete
                                         </Button>
                                         <Button onClick={() => handelItemDelete(list._id)} variant="warning" size="sm">
                                             Delete
